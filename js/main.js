@@ -80,6 +80,12 @@ window.initMap = () => {
     center: loc,
     scrollwheel: false
   });
+  // google.maps.event.addListener(self.map, "tilesloaded", function(){
+  //   [].slice.apply(document.querySelectorAll('#map a, div, button')).forEach(function(item) {
+  //       item.setAttribute('tabindex','-1');
+  //   });
+  // });
+
   updateRestaurants();
 }
 
@@ -158,6 +164,7 @@ createRestaurantHTML = (restaurant) => {
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
+  more.setAttribute('aria-label', "view details for" + restaurant.name);
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
 
