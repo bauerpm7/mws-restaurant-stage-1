@@ -1,5 +1,9 @@
 'use strict';
 
+/*
+ *Adapted from https://developers.google.com/web/ilt/pwa/lab-caching-files-with-service-worker
+ */
+
 let filesToCache = [
   '.',
   'css/styles.css',
