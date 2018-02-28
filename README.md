@@ -12,3 +12,4 @@ The objective of this project was to take a static design that lacks accesibilit
 
 * With your server running, visit the site: http://localhost:8000, and look around for a bit to see what the current experience looks like.
 
+
