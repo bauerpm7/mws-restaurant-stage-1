@@ -266,7 +266,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   padding: 30px 40px 110px;
 
 }
-#reviews-container h2 {
+#reviews-container h3 {
   color: #f58500;
   font-size: 24pt;
   font-weight: 300;
@@ -306,6 +306,8 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
     height: 300px;
     width: 100%;
     top: 130px;
+    padding-top: 0;
+
   }
 
   .inside #breadcrumb {
