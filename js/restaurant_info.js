@@ -14,6 +14,18 @@ window.initMap = () => {
         center: restaurant.latlng,
         scrollwheel: false
       });
+
+      // remove focus
+      // assuming map doesn't need focus
+      // https://stackoverflow.com/questions/30531075/
+      google.maps.event.addListener(self.map, "tilesloaded", function(){
+        [].slice.apply(document.querySelectorAll('#map a,button')).forEach(function(item) {
+          item.setAttribute('tabindex','-1');
+        });
+        // div for map satellite buttons
+        // button for right side zoom buttons
+      });
+
       fillBreadcrumb();
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
     }
@@ -95,6 +107,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  * Create all reviews HTML and add them to the webpage.
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
+  let tabIndex = 2
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h3');
   title.innerHTML = 'Reviews';
@@ -108,7 +121,8 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   }
   const ul = document.getElementById('reviews-list');
   reviews.forEach(review => {
-    ul.appendChild(createReviewHTML(review));
+    ul.appendChild(createReviewHTML(review, tabIndex));
+    tabIndex ++;
   });
   container.appendChild(ul);
 }
@@ -116,8 +130,9 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 /**
  * Create review HTML and add it to the webpage.
  */
-createReviewHTML = (review) => {
+createReviewHTML = (review, tabIndex) => {
   const li = document.createElement('li');
+  li.setAttribute('tabindex', tabIndex.toString())
   const name = document.createElement('p');
   name.innerHTML = review.name;
   li.appendChild(name);
